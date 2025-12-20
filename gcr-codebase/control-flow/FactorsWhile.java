@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class FactorsWhile {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // User input for number
+        System.out.print("Enter a positive integer: ");
+        int number = sc.nextInt();
+
+        // Output the result using while loop
+        if (number > 0) {
+            System.out.println("Factors of " + number + ":");
+            int counter = 1;
+            while (counter < number) {
+                if (number % counter == 0) {
+                    System.out.println(counter);
+                }
+                counter++;
+            }
+        } else {
+            System.out.println("Please enter a positive integer");
+        }
+    }
+}
