@@ -45,5 +45,9 @@ public class PollingBoothSystem {
       close = sc.nextInt();
       System.out.println("-----------------------------------");
     }
+    System.out.println("Current Vote Count:");
+    System.out.println("Candidate A: " + candidate1 + " votes");
+    System.out.println("Candidate B: " + candidate2 + " votes");
+    System.out.println("Candidate C: " + candidate3 + " votes");
   }
 }
