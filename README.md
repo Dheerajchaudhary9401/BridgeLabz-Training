@@ -143,7 +143,7 @@ This repository contains all the tasks, practice programs, scenario-based proble
   - Solved _Library Management System_ scenario based question
   - Solved _EduQuiz_ Scenario based question
 
-## Week 4: Advance OOPS Concept And DSA
+## Week 4: OOPS Concept And DSA
 
 ---
 
@@ -181,6 +181,10 @@ This repository contains all the tasks, practice programs, scenario-based proble
   - Solved scenario based question on _Vehicle Rental Application_
   - Solved scenario based question on _Flight Booking System_
 
+## Week 5: OOPS Concept And DSA
+
+---
+
 - **12-Jan-2026 (Monday) :-**
   - Solved scenario based question on _E-Commerce Order Management System_
   - Solved scenario based question on _Student Course Registration System_
@@ -199,11 +203,15 @@ This repository contains all the tasks, practice programs, scenario-based proble
   - Solved scenario based question on _Online Examination System_
 
   - **15-Jan-2026 (Thursday) :-**
-    -Learn Sorting and searching algo
+  - Learn Sorting and searching algo
   - Solved scenario based question on _Bubble Sort_
   - Solved scenario based question on _Insertion Sort_
 
   - **16-Jan-2026 (Firday) :-**
   - Solved scenario based question on \_Quick Sort
-  - Solved scenario based question on _Sleection Sort_
+  - Solved scenario based question on _Selection Sort_
   - Solved scenario based question on _ Counting Sort_
+
+  - **17-Jan-2026 (Firday) :-**
+  - Studied StringBuilder, StringBuffer, FileReader, InputStreamReader,Linear Search and Binary Search
+  - Solved problems related StringBuilder, StringBuffer, FileReader, InputStreamReader,Linear Search and Binary Search
