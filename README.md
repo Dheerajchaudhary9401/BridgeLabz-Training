@@ -17,7 +17,7 @@ The README will be updated regularly as new topics, folders, and implementations
      │   │   ├── programming-elements/
      │   │   ├── control-flow/
      |   |   ├── methods/
-     |   |   ├── string/
+     |   |   ├── strings/
      |   |   ├── arrays/
      |   |   └── extras/
      │   │
@@ -29,12 +29,12 @@ The README will be updated regularly as new topics, folders, and implementations
      │   │
      │   ├── gcr-codebase/
      │   │   ├── class-objects/
-     │   │   ├── constructors-modifiers/
-     |   |   ├── keywords-instanceOf-operator/
-     |   |   ├── object-oriented-design-principles/
+     │   │   ├── constructors/
+     |   |   ├── keywords-instanceOf/
+     |   |   ├── diagrams-modelling/
      |   |   ├── inheritance/
      |   |   ├── encapsulation-polymorphism/
-     |   |   └── address-book/
+     |   |   └── Address_book/
      |   |
      │   ├── leet-code-codebase
      |   |
@@ -43,10 +43,10 @@ The README will be updated regularly as new topics, folders, and implementations
      |
      ├── dsa-practice/
      │   ├── gcr-codebase/
-     │   │   ├── linked-list
-     |   |   ├── stack-queue-hashmap/
+     │   │   ├── linkedlist
+     |   |   ├── stack-queue-hashmap-hashfunction/
      |   |   ├── sorting/
-     |   |   └── linear-binary-search/
+     |   |   └── searching/
      |   |
      |   |
      ├── review/
@@ -57,14 +57,14 @@ The README will be updated regularly as new topics, folders, and implementations
 ### 🔗 Quick Navigation
 
 - 📁 **Scenario-Based Problems**
-  - [Digital Wallet System](../../tree/oops-practice/scenario-based/Digital%20Wallet%20System)
-  - [Flight Booking System](../../tree/oops-practice/scenario-based/Flight%20Booking%20System)
-  - [Hospital Management system](../../tree/oops-practice/scenario-based/Hospital%20Management%20System)
-  - [Inventory Management System](../../tree/oops-practice/scenario-based/Inventory%20Management%20System)
-  - [Online Voting System](../../tree/oops-practice/scenario-based/Online%20Voting%20System)
-  - [Vehicle Rental Application](../../tree/oops-practice/scenario-based/Vehicle%20Rental%20Application)
+  - [Digital Wallet System](../../tree/oops-practice/scenario-based/digital-wallet-system)
+  - [Flight Booking System](../../tree/oops-practice/scenario-based/flight-booking-system)
+  - [Hospital Management system](../../tree/oops-practice/scenario-based/hospital-management-system)
+  - [Inventory Management System](../../tree/oops-practice/scenario-based/inventory-management-system)
+  - [Online Voting System](../../tree/oops-practice/scenario-based/online-voting-system)
+  - [Vehicle Rental Application](../../tree/oops-practice/scenario-based/vehicle-rental)
   - [OOPs Scenario Based](../../tree/oops-practice/scenario-based)
-  - [Core-Java Scenario Based](../../tree/core-java-practice/core-java-practice/scenario-based)
+  - [Core-Java Scenario Based](../../tree/core-java-practice/scenario-based)
 
 ---
 
