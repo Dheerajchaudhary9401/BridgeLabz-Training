@@ -1,108 +1,129 @@
-package Address_book;
-import java.util.*;
+package address_book;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class AddressBook {
 	private String addressBookName;
+	private Map<String,Contact> addressBook=new HashMap<>();
+	private Map<String,List<Contact>> cityMap=new HashMap<>();
+	private Map<String,List<Contact>> stateMap=new HashMap<>();
+	
 	public AddressBook(String addressBookName) {
 		this.addressBookName=addressBookName;
 	}
 	
 	public String getName() {
-		return addressBookName;
-	}
+        return addressBookName;
+    }
 	
 	public void setName(String newAddressBookName) {
 		addressBookName=newAddressBookName;
 	}
 	
-	Scanner sc = new Scanner(System.in);
-	ArrayList<Contact> contacts= new ArrayList<>();
-	public void addContact() {
-		System.out.println("Enter details");
-		System.out.print("First name: ");
-		String name = sc.nextLine();
-		System.out.print("Last name: ");
-		String lastName = sc.nextLine();
-		System.out.print("Address: ");
-		String address=sc.nextLine();
-		System.out.print("City: ");
-		String city=sc.nextLine();
-		System.out.print("State: ");
-		String state=sc.nextLine();
-		System.out.print("Zip: ");
-		String zip=sc.nextLine();
-		System.out.print("Phone number: ");
-		String phone=sc.nextLine();
-		System.out.print("Email: ");
-		String email=sc.nextLine();
-		Contact contact = new Contact(name, lastName, address, city, state, zip, phone, email);
-		contacts.add(contact);
+	public void addContact(Contact contact) {
+		String key=contact.getName().toLowerCase();
+		if(addressBook.containsKey(key)) {
+			System.out.println("Contact already exits!");
+			return;
+		}
+		addressBook.put(key,contact);
+		addToDictionary(contact);
+		System.out.println("Contact added successfully.");
 	}
-	public void editByName(String fullName) {
-		boolean found=false;
-		for(Contact c:contacts) {
-			if(c.getName().equalsIgnoreCase(fullName)) {
-				
-				System.out.print("Enter the first name: ");
-				String firstName=sc.nextLine();
-				c.setFirstName(firstName);
-				
-				System.out.print("Enter the last name: ");
-				String lastName=sc.nextLine();
-				c.setLastName(lastName);
-				
-				System.out.print("Enter the address: ");
-				String address=sc.nextLine();
-				c.setAddress(address);
-				
-				System.out.print("Enter the city: ");
-				String city=sc.nextLine();
-				c.setCity(city);
-				
-				System.out.print("Enter the state: ");
-				String state=sc.nextLine();
-				c.setState(state);
-				
-				System.out.print("Enter the zip: ");
-				String zip=sc.nextLine();
-				c.setZip(zip);
-				
-				System.out.print("Enter the phoneNumber: ");
-				String phoneNumber=sc.nextLine();
-				c.setPhoneNumber(phoneNumber);
-				
-				System.out.print("Enter the email: ");
-				String email=sc.nextLine();
-				c.setEmail(email);
-				
-				found=true;
-				break;
-			}
-		}
-		if(!found) {
-			System.out.println("Name not found !");
-		}
+	
+	private void addToDictionary(Contact contact) {
+		cityMap.computeIfAbsent(contact.getCity(),k-> new ArrayList<>()).add(contact);
+		stateMap.computeIfAbsent(contact.getState(),k->new ArrayList<>()).add(contact);
 	}
-	public void deleteByName(String fullName) {
-		boolean found=false;
-		for(int i=0;i<contacts.size();i++) {
-			if(contacts.get(i).getName().equalsIgnoreCase(fullName)) {
-				contacts.remove(i);
-				found=true;
-				break;
-			}
+	
+	public void editContact(String fullName, Contact updatedContact) {
+		String key=fullName.toLowerCase();
+		if(!addressBook.containsKey(key)) {
+			System.out.println("Contact not found!");
+			return;
 		}
-		if(!found) {
-			System.out.println("Name not found !");
+		addressBook.remove(key);
+		addressBook.put(updatedContact.getName().toLowerCase(), updatedContact);
+		System.out.println("Contact updated successfully.");
+		
+	}
+	public void deleteContact(String fullName) {
+		String key=fullName.toLowerCase();
+		if(addressBook.remove(key)==null) {
+			System.out.println("Contact not found!");
+		}else {
+			System.out.println("Contact deleted successfully.");
 		}
 	}
 	
 	public void displayContactDetails() {
-		for(Contact c: contacts) {
-			System.out.println("Details of Contact named "+c.getName()+" :");
-			c.displayDetails();
+		for(Contact contact: addressBook.values()) {
+			System.out.println("====================");
+			System.out.println("Details of Contact named "+contact.getName()+" :");
+			contact.displayDetails();
 			System.out.println("====================");
 		}
 	}
 	
+	public Collection<Contact> getAllcontacts(){
+		return addressBook.values();
+	}
+	
+	public List<Contact> getContactsByCity(String city){
+		return cityMap.getOrDefault(city, new ArrayList<>());
+	}
+	
+	public List<Contact> getContactsByState(String state){
+		return stateMap.getOrDefault(state, new ArrayList<>());
+	}
+	
+	public int getCountByCity(String city) {
+		return cityMap.getOrDefault(city,new ArrayList<>()).size();
+	}
+	
+	public int getCountByState(String state) {
+		return stateMap.getOrDefault(state, new ArrayList<>()).size();
+	}
+	
+	public void sortContactsByName() {
+		List<Contact> sortedList=new ArrayList<>(addressBook.values());
+		sortedList.sort((c1,c2) -> {
+			int firstNameCompare=c1.getFirstName().compareToIgnoreCase(c2.getFirstName());
+			if(firstNameCompare!=0) return firstNameCompare;
+			return c1.getLastName().compareToIgnoreCase(c2.getLastName());
+		});
+		for(Contact contact:sortedList) {
+			System.out.println(contact);
+		}
+	}
+	
+	public void sortContactsByCity() {
+		List<Contact> sortedList=new ArrayList<>(addressBook.values());
+		//sortedList.sort((c1,c2)->c1.getCity().compareToIgnoreCase(c2.getCity()));
+		sortedList.sort(Comparator.comparing(Contact::getCity,String.CASE_INSENSITIVE_ORDER));
+		for(Contact contact:sortedList) {
+			System.out.println(contact);
+		}
+	}
+	
+	public void sortContactsByState() {
+		List<Contact> sortedList=new ArrayList<>(addressBook.values());
+		sortedList.sort(Comparator.comparing(Contact::getState,String.CASE_INSENSITIVE_ORDER));
+		for(Contact contact:sortedList) {
+			System.out.println(contact);
+		}
+	}
+	
+	public void sortContactsByZip() {
+		List<Contact> sortedList=new ArrayList<>(addressBook.values());
+		sortedList.sort(Comparator.comparing(Contact::getZip,String.CASE_INSENSITIVE_ORDER));
+		for(Contact contact:sortedList) {
+			System.out.println(contact);
+		}
+	}
 }
-
